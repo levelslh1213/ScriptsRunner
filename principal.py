@@ -1,20 +1,25 @@
 from configuration import getConnection, getScriptPath
 from scriptParser import Parser
+from runner import Runner
 
 modulo = 'Principal'
 
-connection = getConnection()
-print(connection)
-if connection is None: 
+connectionString, owner = getConnection()
+print(connectionString)
+if connectionString is None: 
     exit
 
 scriptPath, sep = getScriptPath()
-print(sep)
-print(scriptPath)
-print(type(scriptPath))
 if scriptPath is None: 
     exit
 
-parserer = Parser(scriptPath, sep)
-print(parserer.scripts)
-print(parserer.scripts[0])
+parserer = Parser()
+scripts = parserer.getScripts(scriptsPath=scriptPath, sep= sep)
+print(scripts[0])
+
+runner = Runner(connectionString)
+
+# script = 'SELECT * FROM SISTEMA_VERSAO;'
+# print(str(runner.runScript(script)))
+
+

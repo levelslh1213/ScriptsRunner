@@ -3,13 +3,11 @@ import configparser as cp
 
 module = 'Parser'
 
-class Parser:
-    def __init__(self, scriptsPath, sep) -> None:
-        self.scripts = Parser.getScripts(scriptsPath, sep)
-        self.successfullScripts = []
-        self.errorScripts = []
+class Parser(object):
+    def __init__(self):
+        pass
 
-    def getScripts(scriptsPath, sep):
+    def getScripts(self, scriptsPath, sep):
         if scriptsPath == '':
             print( 'Execution error: ' + '\nModule: ' + module + '\nFunction: getScripts' + '\n Description: Caminho de script vazio!')
             return None
